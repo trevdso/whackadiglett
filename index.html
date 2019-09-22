@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="whackadiglett\whackadiglett.css">
+    <script>
+        var x;
+        var y;
+        var call;
+        var score = 0;
+        window.addEventListener("load", function main() {
+            document.getElementById("postrack").addEventListener("click", function () { scoreCount() });
+            function subX() {
+                x= ((Math.random() * ((1490 - 250) + 1)) + 20);
+                y= ((Math.random() * ((450 - 430) + 1)) + 430);
+                document.getElementById("char").style.left = x+"px";
+                document.getElementById("char").style.top = y+"px";
+                document.getElementById("postrack").style.left = (x+20)+"px";
+                document.getElementById("postrack").style.top = (y+20)+"px";
+            }
+            
+            setInterval(subX, 1000);
+            function scoreCount() {
+                score++; 
+                var newscore = document.createElement("DIV");
+                var id_for_div = document.createAttribute("ID");
+                switch (score) {
+                    case 0:
+                        id_for_div.value = "zero";
+                        break;
+                    case 1:
+                        var element = document.getElementById("zero");
+                        element.parentNode.removeChild(element);
+                        id_for_div.value = "one";
+                        break;
+                    case 2:                    
+                        var element = document.getElementById("one");
+                        element.parentNode.removeChild(element);
+                        id_for_div.value = "two";
+                        break;
+                    case 3:
+                        var element = document.getElementById("two");
+                        element.parentNode.removeChild(element);
+                        id_for_div.value = "three";
+                        break;
+                    case 4:
+                        var element = document.getElementById("three");
+                        element.parentNode.removeChild(element);
+                        id_for_div.value = "four";
+                        break;
+                    case 5:
+                        var element = document.getElementById("four");
+                        element.parentNode.removeChild(element);
+                        id_for_div.value = "five";
+                        var endGame = document.createElement("DIV");
+                        var id_for_endGame = document.createAttribute("ID");
+                        id_for_endGame.value = "endGame";
+                        endGame.setAttributeNode(id_for_endGame);
+                        document.getElementById("body").appendChild(endGame);
+                        break;
+                    default:
+                        break;
+                }
+                newscore.setAttributeNode(id_for_div);
+                document.getElementById("body").appendChild(newscore);
+            }
+        });
+        
+    </script>
+    <title>Whack-A-Diglett</title>
+</head>
+
+<body id="body">
+    <div class="sky1"></div>
+    <div class="sky2"></div>
+    <div class="sky3"></div>
+    <div class="sky4"></div>
+    <div class="mid1"></div>
+    <div class="mid2"></div>
+    <div class="mid3"></div>
+    <div class="bot1"></div>
+    <div class="bot2"></div>
+    <div class="bot3"></div>
+    <div id="postrack" style="position:absolute;height: 100px; width: 100px; left: 520px; top: 470px; z-index: 80;"></div>
+    <div id="char" style="position: absolute; left: 500px; top: 450px; z-index: 30;"></div>
+    <div id="scoreboard"></div>
+    <div id="zero" name="score"></div>
+</body>
+
+</html>
